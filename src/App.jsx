@@ -17,6 +17,8 @@ import {
   PhoneCall
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import ParticlesCanvas from './components/ParticlesCanvas';
+import OutcomeChart from './components/OutcomeChart';
 
 const SOCIETIES = [
   { id: 'silvercreek', name: 'Silver Creek Country Club Estates', homes: 520, coveredToday: 410, address: 'San Jose, CA' },
@@ -135,33 +137,35 @@ export default function App() {
       </header>
 
       {/* Hero Section */}
-      <section className="relative pt-12 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(16,185,129,0.08),transparent_50%)] pointer-events-none" />
-        <div className="max-w-5xl mx-auto text-center space-y-6">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900 border border-slate-700/80 text-xs text-emerald-300">
+      <section className="relative pt-16 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+        <ParticlesCanvas color="16, 185, 129" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(16,185,129,0.12),transparent_60%)] pointer-events-none" />
+        
+        <div className="relative z-10 max-w-5xl mx-auto text-center space-y-6">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900/90 border border-emerald-500/30 text-xs text-emerald-300 font-mono shadow-lg shadow-emerald-950/40">
             <ShieldCheck className="w-4 h-4 text-emerald-400" />
             <span>Zero Callout Fees • Certified Society Technician Pools • Pre-Negotiated Bulk Rates</span>
           </div>
 
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight">
-            All-in-One Gated Community Appliance Maintenance Subscription
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-tight">
+            All-in-One Gated Community <span className="bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-300 bg-clip-text text-transparent">Appliance Maintenance Subscription</span>
           </h1>
 
-          <p className="text-lg sm:text-xl text-slate-400 max-w-3xl mx-auto font-normal leading-relaxed">
+          <p className="text-lg sm:text-xl text-slate-300 max-w-3xl mx-auto font-normal leading-relaxed">
             Stop juggling 6 different unvetted technicians for HVAC, refrigerators, and water filters. SocietyAMC pools maintenance contracts across your entire gated neighborhood. Get unlimited seasonal tune-ups, $0 diagnostic visits, and certified dedicated technician pools.
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
             <a 
               href="#claim-simulator" 
-              className="px-6 py-3.5 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-sm rounded-xl transition-all shadow-lg shadow-emerald-500/25 flex items-center gap-2"
+              className="px-6 py-3.5 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 font-bold text-sm rounded-xl transition-all shadow-xl shadow-emerald-500/30 flex items-center gap-2 hover:scale-[1.02]"
             >
               <span>Test Emergency Service Request</span>
               <ArrowRight className="w-4 h-4" />
             </a>
             <a 
               href="#appliances" 
-              className="px-6 py-3.5 bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-700 font-semibold text-sm rounded-xl transition-all flex items-center gap-2"
+              className="px-6 py-3.5 bg-slate-900/90 hover:bg-slate-800 text-slate-200 border border-emerald-500/30 font-semibold text-sm rounded-xl transition-all flex items-center gap-2 hover:border-emerald-400/60"
             >
               <Wrench className="w-4 h-4 text-emerald-400" />
               <span>Inspect Covered Systems</span>
@@ -170,24 +174,29 @@ export default function App() {
 
           {/* Market TAM & Metrics */}
           <div className="pt-10 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto text-left">
-            <div className="bg-slate-900/60 border border-slate-800 rounded-xl p-4">
+            <div className="bg-slate-900/80 border border-emerald-500/20 rounded-xl p-4 backdrop-blur-md">
               <div className="text-2xl font-black text-emerald-400">$480M</div>
               <div className="text-xs text-slate-400 font-medium">Gated Society AMC TAM</div>
             </div>
-            <div className="bg-slate-900/60 border border-slate-800 rounded-xl p-4">
+            <div className="bg-slate-900/80 border border-white/10 rounded-xl p-4 backdrop-blur-md">
               <div className="text-2xl font-black text-white">$0</div>
               <div className="text-xs text-slate-400 font-medium">Emergency Diagnostic Callout Fee</div>
             </div>
-            <div className="bg-slate-900/60 border border-slate-800 rounded-xl p-4">
+            <div className="bg-slate-900/80 border border-emerald-500/20 rounded-xl p-4 backdrop-blur-md">
               <div className="text-2xl font-black text-emerald-400">4 Hours</div>
               <div className="text-xs text-slate-400 font-medium">Average On-Site Technician ETA</div>
             </div>
-            <div className="bg-slate-900/60 border border-slate-800 rounded-xl p-4">
+            <div className="bg-slate-900/80 border border-white/10 rounded-xl p-4 backdrop-blur-md">
               <div className="text-2xl font-black text-white">$240/yr</div>
               <div className="text-xs text-slate-400 font-medium">Full Home Multi-Appliance Rate</div>
             </div>
           </div>
         </div>
+      </section>
+
+      {/* Julien Bek $1:$6 Sequoia Framework + Bklit UI Outcome Engine */}
+      <section className="px-4 sm:px-6 lg:px-8">
+        <OutcomeChart onCtaClick={() => setIsCabModalOpen(true)} />
       </section>
 
       {/* Feature 1: Covered Appliances Roster */}
